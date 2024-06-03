@@ -17,7 +17,7 @@ export function defaultSetting(): UserState {
     userInfo: {
       avatar: 'https://previews.dropbox.com/p/thumb/ACTtOl1Os6fvr7NBpWhfbbuHd45l7etYT1p3YjF0Vnudsy40yh8KCYE1dB-4gxCPEdO2BGBX80arXoL1tRpF4i8YhG7692Nw5o1RuzbjLEDlrsnSkQP5RIO6VR7NXuBVIOtzQanPLvaILKd-pjuFjOCArtmjEaJh8GqnnLZFhkjqzs9E4uhK2fLV-KZEuRDaecHqdJg7OphmutX8d1CDt87H7ehzECLr_WErzl_CqckVBihXRubDNeGnWqyt1z30XlouTujCwOEberPtZU0o0n1ue1x0ZsbQVGnru7LytOI-SbNZAghMCxnKwQ6LysAOYR50pFyH9w_GVAequczotaQO/p.jpeg',
       name:  t('mjset.sysname'),//'AI绘图',
-      description: 'Star on <a href="https://github.com/Dooy/chatgpt-web-midjourney-proxy" class="text-blue-500" target="_blank" >GitHub</a>',
+      description: 'Star on <a href="https://github.com/wangshanbo/chatgpt-web-midjourney-proxy" class="text-blue-500" target="_blank" >GitHub</a>',
     },
   }
 }
