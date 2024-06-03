@@ -9,7 +9,8 @@ import {  watch } from "vue";
 const emit= defineEmits(['close']);
 const ms= useMessage();
 const save = ()=>{
-    gptServerStore.setMyData( gptServerStore.myData );
+    // gptServerStore.setMyData( gptServerStore.myData );
+    localStorage.setItem('gptServer', JSON.stringify(gptServerStore.myData));
     ms.success( t('mjchat.success'));
     emit('close');
 }
