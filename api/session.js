@@ -1,5 +1,4 @@
 module.exports = (req, res) => {
-  console.log('session.js', req.body);
   try {
     let data = req.body.data; 
     let obj ={
@@ -18,7 +17,7 @@ module.exports = (req, res) => {
             , notify : process.env.SYS_NOTIFY?? "" 
             ,disableGpt4 : process.env.DISABLE_GPT4?? "" 
             ,isWsrv:  process.env.MJ_IMG_WSRV?? "" 
-            ,uploadImgSize: process.env.UPLOAD_IMG_SIZE?? "1" 
+            ,uploadImgSize: process.env.UPLOAD_IMG_SIZE?? "5" 
             ,gptUrl : process.env.GPT_URL?? ""
             ,theme : process.env.SYS_THEME?? "dark"
             ,isCloseMdPreview : process.env.CLOSE_MD_PREVIEW?true:false
