@@ -44,14 +44,14 @@ watch(()=>homeStore.myData.act, (n:string)=>{
       </div>
 
 
-      <div v-if="!isDisableMenu ( 'draws')" class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >
+      <!-- <div v-if="!isDisableMenu ( 'draws')" class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >
         <SvgIcon icon="ic:outline-palette" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.draw')}}</div>
-      </div>
-      <div  v-if="!isDisableMenu ( 'gallery')"  class="flex items-center justify-center flex-col " @click="homeStore.setMyData({act:'gallery'})" >
+      </div> -->
+      <!-- <div  v-if="!isDisableMenu ( 'gallery')"  class="flex items-center justify-center flex-col " @click="homeStore.setMyData({act:'gallery'})" >
         <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.gallery')}}</div>
-      </div> 
+      </div>  -->
   </div>
 
   <n-drawer v-model:show="st.show"  class="!h-[90vh] !max-h-[660px]"     placement="bottom" v-if="goHome=='draw'">
