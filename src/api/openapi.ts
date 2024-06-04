@@ -243,7 +243,7 @@ function getHeaderAuthorization() {
         const vtokenh = { 'x-vtoken': homeStore.myData.vtoken, 'x-ctoken': homeStore.myData.ctoken };
         headers = { ...headers, ...vtokenh }
     }
-    if (!apiKey && !gptServerStore.myData.OPENAI_API_KEY) {
+    if (!apiKey && !gptServerStore.myData.API_KEY) {
         const authStore = useAuthStore()
         if (authStore.token) {
             const bmi = { 'x-ptoken': authStore.token };
@@ -252,8 +252,14 @@ function getHeaderAuthorization() {
         }
         return headers
     }
+    let Bearer = 'Bearer ';
+    if (apiKey) {
+        Bearer = 'Bearer ' + apiKey;
+    } else {
+        Bearer = 'Bearer ' + gptServerStore.myData.API_KEY;
+    }
     const bmi = {
-        'Authorization': 'Bearer ' + apiKey ? apiKey : gptServerStore.myData.OPENAI_API_KEY
+        'Authorization': Bearer
     }
     headers = { ...headers, ...bmi }
     return headers
@@ -323,7 +329,7 @@ export const subModel = async (opt: subModelType) => {
 
     let headers = {
         'Content-Type': 'application/json'
-        , 'Authorization': 'Bearer ' + apiKey
+        , 'Authorization': 'Bearer ' + apiKey ? apiKey : gptServerStore.myData.API_KEY
         , 'Accept': 'text/event-stream '
     }
     headers = { ...headers, ...getHeaderAuthorization() }
@@ -331,7 +337,10 @@ export const subModel = async (opt: subModelType) => {
     try {
         await fetchSSE(gptGetUrl('/v1/chat/completions'), {
             method: 'POST',
-            headers: headers,
+            headers: {
+                ...headers,
+                Authorization: headers.Authorization || '', // Ensure Authorization is a string
+            },
             signal: opt.signal,
             onMessage: async (data: string) => {
                 //mlog('🐞测试'  ,  data )  ;
@@ -466,7 +475,6 @@ export const openaiSetting = (q: any) => {
         }
     }
     else if (isObject(q)) {
-        console.log('q', q);
         mlog('setting2', q)
         gptServerStore.setMyData(q)
         //gptServerStore.setMyData( gptServerStore.myData );
