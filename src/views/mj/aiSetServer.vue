@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import { NInput, NButton, useMessage,NSwitch} from "naive-ui"
- 
-import {gptServerStore} from '@/store'
-import { mlog, myTrim,blurClean} from "@/api";
-import { t } from '@/locales'
-import {  watch } from "vue";
+import { NInput, NButton, useMessage, NSwitch } from "naive-ui";
 
-const emit= defineEmits(['close']);
-const ms= useMessage();
-const save = ()=>{
-    // gptServerStore.setMyData( gptServerStore.myData );
-    localStorage.setItem('apiKey', gptServerStore.myData.OPENAI_API_KEY);
-    ms.success( t('mjchat.success'));
-    emit('close');
-}
+import { gptServerStore } from "@/store";
+import { mlog, myTrim, blurClean } from "@/api";
+import { t } from "@/locales";
+import { onMounted, watch } from "vue";
+
+const emit = defineEmits(["close"]);
+const ms = useMessage();
+const save = () => {
+  // gptServerStore.setMyData( gptServerStore.myData );
+  localStorage.setItem("apiKey", gptServerStore.myData.OPENAI_API_KEY);
+  ms.success(t("mjchat.success"));
+  emit("close");
+};
+// 初始化的时候如果apiKey有值设置到store
+onMounted(() => {
+  const apiKey = localStorage.getItem("apiKey");
+  if (apiKey) {
+    gptServerStore.myData.OPENAI_API_KEY = apiKey;
+  }
+});
 // const blurClean= ()=>{
 //   mlog('blurClean');
 //   gptServerStore.myData.OPENAI_API_BASE_URL =myTrim( myTrim(gptServerStore.myData.OPENAI_API_BASE_URL.trim(),'/'), '\\' );
@@ -24,20 +31,26 @@ const save = ()=>{
 // }
 
 //const isSync= computed(()=>gptServerStore.myData.IS_SET_SYNC )
-watch(() => gptServerStore.myData.OPENAI_API_BASE_URL , (n)=>{
-   if(!gptServerStore.myData.IS_SET_SYNC) return  ;
-    gptServerStore.myData.MJ_SERVER= n
-    gptServerStore.myData.SUNO_SERVER=n;
-});
-watch(() => gptServerStore.myData.OPENAI_API_KEY , (n)=>{
-    if(!gptServerStore.myData.IS_SET_SYNC) return  ;
-    gptServerStore.myData.MJ_API_SECRET= n
-    gptServerStore.myData.SUNO_KEY=n;
-});
+watch(
+  () => gptServerStore.myData.OPENAI_API_BASE_URL,
+  (n) => {
+    if (!gptServerStore.myData.IS_SET_SYNC) return;
+    gptServerStore.myData.MJ_SERVER = n;
+    gptServerStore.myData.SUNO_SERVER = n;
+  }
+);
+watch(
+  () => gptServerStore.myData.OPENAI_API_KEY,
+  (n) => {
+    if (!gptServerStore.myData.IS_SET_SYNC) return;
+    gptServerStore.myData.MJ_API_SECRET = n;
+    gptServerStore.myData.SUNO_KEY = n;
+  }
+);
 </script>
 <template>
-<div id="setserver"> 
-<!-- <div class="flex justify-between items-baseline ">
+  <div id="setserver">
+    <!-- <div class="flex justify-between items-baseline ">
   <div class="pb-1">
    <n-switch v-model:value="gptServerStore.myData.IS_SET_SYNC" size="small" >
       <template #checked>{{ $t('mjchat.setSync') }}</template>
@@ -47,7 +60,7 @@ watch(() => gptServerStore.myData.OPENAI_API_KEY , (n)=>{
   <div class="text-right">{{ $t('mj.setOpen') }}</div>
 </div> -->
 
-<!-- <section class="mb-4 flex justify-between items-center"  >
+    <!-- <section class="mb-4 flex justify-between items-center"  >
     <n-input @blur="blurClean"  :placeholder="$t('mj.setOpenPlaceholder') " v-model:value="gptServerStore.myData.OPENAI_API_BASE_URL" clearable>
       <template #prefix>
         <span class="text-[var(--n-tab-text-color-active)]">{{ $t('mj.setOpenUrl') }}:</span>
@@ -55,16 +68,24 @@ watch(() => gptServerStore.myData.OPENAI_API_KEY , (n)=>{
     </n-input>
  </section> -->
 
-<section class="mb-4 flex justify-between items-center"  >
-    <n-input  @blur="blurClean" type="password"  :placeholder="$t('mj.setOpenKeyPlaceholder')" show-password-on="click" v-model:value="gptServerStore.myData.OPENAI_API_KEY" clearable>
-      <template #prefix>
-        <span class="text-[var(--n-tab-text-color-active)]">OpenAI Api Key:</span>
-      </template>
-    </n-input>
- </section>
+    <section class="mb-4 flex justify-between items-center">
+      <n-input
+        @blur="blurClean"
+        type="password"
+        :placeholder="$t('mj.setOpenKeyPlaceholder')"
+        show-password-on="click"
+        v-model:value="gptServerStore.myData.OPENAI_API_KEY"
+        clearable
+      >
+        <template #prefix>
+          <span class="text-[var(--n-tab-text-color-active)]"
+            >OpenAI Api Key:</span
+          >
+        </template>
+      </n-input>
+    </section>
 
-
- <!-- <div class="flex justify-between items-baseline ">
+    <!-- <div class="flex justify-between items-baseline ">
   <section class="mb-4 flex justify-start items-center">
     <n-switch v-model:value="gptServerStore.myData.GPTS_GX" >
         <template #checked>{{ $t('mj.gpt_gx') }}</template>
@@ -125,15 +146,14 @@ watch(() => gptServerStore.myData.OPENAI_API_KEY , (n)=>{
     </n-input>
  </section> -->
 
-
-<section class=" text-right flex justify-end space-x-2"  >
-    <!-- <NButton   @click="gptServerStore.setInit()">{{$t('mj.setBtBack')}}</NButton> -->
-    <NButton type="primary" @click="save">{{$t('mj.setBtSave')}}</NButton>
- </section>
-</div>
+    <section class="text-right flex justify-end space-x-2">
+      <!-- <NButton   @click="gptServerStore.setInit()">{{$t('mj.setBtBack')}}</NButton> -->
+      <NButton type="primary" @click="save">{{ $t("mj.setBtSave") }}</NButton>
+    </section>
+  </div>
 </template>
 <style>
-#setserver .n-input .n-input__input-el{
-    text-align: right;
+#setserver .n-input .n-input__input-el {
+  text-align: right;
 }
 </style>
