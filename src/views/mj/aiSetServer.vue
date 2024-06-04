@@ -10,7 +10,7 @@ const emit= defineEmits(['close']);
 const ms= useMessage();
 const save = ()=>{
     // gptServerStore.setMyData( gptServerStore.myData );
-    localStorage.setItem('gptServer', JSON.stringify(gptServerStore.myData));
+    localStorage.setItem('apiKey', gptServerStore.myData.OPENAI_API_KEY);
     ms.success( t('mjchat.success'));
     emit('close');
 }
@@ -127,7 +127,7 @@ watch(() => gptServerStore.myData.OPENAI_API_KEY , (n)=>{
 
 
 <section class=" text-right flex justify-end space-x-2"  >
-    <NButton   @click="gptServerStore.setInit()">{{$t('mj.setBtBack')}}</NButton>
+    <!-- <NButton   @click="gptServerStore.setInit()">{{$t('mj.setBtBack')}}</NButton> -->
     <NButton type="primary" @click="save">{{$t('mj.setBtSave')}}</NButton>
  </section>
 </div>

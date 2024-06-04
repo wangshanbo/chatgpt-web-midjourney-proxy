@@ -74,14 +74,9 @@ const dataSources = computed(() => chatStore.getChatByUuid(+uuid));
 
 const handleSubmit = () => {
   if (mvalue.value == "") return;
-  console.log(gptServerStore.myData);
-  const MyDataObj = JSON.parse(localStorage.getItem("gptServer") as string);
-  if (
-    !MyDataObj.OPENAI_API_KEY ||
-    (gptServerStore.myData.OPENAI_API_KEY ==
-      "hk-74kq4t10000330742260613d771f7f4b07fe072a9c8bf97d" &&
-      gptConfigStore.myData.model != "gpt-3.5-turbo")
-  ) {
+  const apiKey = localStorage.getItem("apiKey");
+
+  if (!apiKey && gptConfigStore.myData.model != "gpt-3.5-turbo") {
     ms.error("请选择gpt-3.5-turbo模型或者设置正确的API_KEY");
     return false;
   }

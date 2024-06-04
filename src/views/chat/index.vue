@@ -595,7 +595,7 @@ const ychat = computed( ()=>{
           :class="[isMobile ? 'p-2' : 'p-4']"
         >
           <template v-if="!dataSources.length">
-            <div class="text-center pt-10" v-if="homeStore.myData.isClient && ( !gptServerStore.myData.OPENAI_API_BASE_URL || !gptServerStore.myData.OPENAI_API_KEY)">
+            <div class="text-center pt-10" v-if="homeStore.myData.isClient && ( !gptServerStore.myData.OPENAI_API_BASE_URL || !gptServerStore.myData.API_KEY)">
               <AiTextSetting/>
             </div>
             <div v-else-if="homeStore.myData.session.notify" v-html="homeStore.myData.session.notify" class="text-neutral-300 mt-4"></div>

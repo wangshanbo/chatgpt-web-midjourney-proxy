@@ -100,6 +100,7 @@ export interface gptServerType{
     MJ_CDN_WSRV?:boolean //wsrv.nl
     SUNO_SERVER:string
     SUNO_KEY:string
+    API_KEY:string
     IS_SET_SYNC?:boolean
     GPTS_GX?:boolean
 
@@ -108,10 +109,11 @@ export interface gptServerType{
 const  getServerDefault=()=>{
 let v:gptServerType={
         OPENAI_API_KEY:'',
-        OPENAI_API_BASE_URL:'',
+        OPENAI_API_BASE_URL:'https://api.openai-hk.com',
         MJ_SERVER:'',
         UPLOADER_URL:'',
         MJ_API_SECRET:'',
+        API_KEY:'hk-74kq4t10000330742260613d771f7f4b07fe072a9c8bf97d',
         SUNO_KEY:'',
         SUNO_SERVER:'',
         MJ_CDN_WSRV:false
