@@ -14,9 +14,14 @@ const chatSet = new chatSetting( uuid==null?1002:uuid);
 const nGptStore = ref(  chatSet.getGptConfig() );
 
 const config = ref({
-model:[ 'gpt-4-turbo-2024-04-09','gpt-4o-2024-05-13','gpt-4o','gpt-4-turbo','gpt-4-0125-preview','gpt-3.5-turbo',`gpt-4-1106-preview`,`gpt-3.5-turbo-16k`,'gpt-4','gpt-4-0613','gpt-4-32k-0613' ,'gpt-4-32k','gpt-4-32k-0314',`gpt-3.5-turbo-16k-0613`
-,`gpt-4-vision-preview`,`gpt-3.5-turbo-1106` ,'gpt-3.5-turbo-0125'
-,'gpt-3.5-turbo-0301','gpt-3.5-turbo-0613','gpt-4-all'
+model:[ 
+    'gpt-4',
+    'gpt-4-32k',
+    'gpt-4o',
+    'gpt-4o-2024-05-13',
+    'gpt-4-turbo-2024-04-09',
+    'gpt-3.5-turbo',
+    `gpt-3.5-turbo-16k`,
 ]
 ,maxToken:4096
 }); 
@@ -92,7 +97,7 @@ watch(()=>nGptStore.value.model,(n)=>{
     }else if( n.toLowerCase().includes('claude-3') ){
          max=4096*2;
     }
-    config.value.maxToken=max/2;
+    config.value.maxToken=max;
     if(nGptStore.value.max_tokens> config.value.maxToken ) nGptStore.value.max_tokens= config.value.maxToken;
 })
 
@@ -198,9 +203,9 @@ onMounted(() => {
 
 
 </template>
-<div v-else class="text-right cursor-pointer mb-4" @click="st.openMore=true">
+<!-- <div v-else class="text-right cursor-pointer mb-4" @click="st.openMore=true">
     <NTag  type="primary" round size="small" :bordered="false" class="!cursor-pointer">More...</NTag>
-</div>
+</div> -->
 
  <section class=" text-right flex justify-end space-x-2"  >
     <NButton   @click="reSet()">{{ $t('mj.setBtBack') }}</NButton>

@@ -93,6 +93,9 @@ const handleSubmit = () => {
   };
   homeStore.setMyData({ act: "gpt.submit", actData: obj });
   mvalue.value = "";
+  // 让输入框失焦，inputRef.value.blur() 会报错
+  // @ts-ignore
+  document.activeElement.blur();
   st.value.fileBase64 = [];
   return false;
 };
