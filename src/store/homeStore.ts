@@ -113,7 +113,7 @@ let v:gptServerType={
         MJ_SERVER:'',
         UPLOADER_URL:'',
         MJ_API_SECRET:'',
-        API_KEY:'hk-74kq4t10000330742260613d771f7f4b07fe072a9c8bf97d',
+        API_KEY:'hk-7afvhv10000330740d413681a52590dd32488bf33987180b',
         SUNO_KEY:'',
         SUNO_SERVER:'',
         MJ_CDN_WSRV:false
