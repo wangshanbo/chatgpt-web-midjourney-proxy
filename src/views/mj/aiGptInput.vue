@@ -384,7 +384,7 @@ watch(() => homeStore.myData.vtoken, regCookie);
                     v-if="st.isLoad == 1"
                   ></SvgIcon>
                   <SvgIcon
-                    icon="ri:attachment-line"
+                    icon="ri:upload-2-fill"
                     class="absolute bottom-[10px] left-[8px] cursor-pointer"
                     @click="fsRef.click()"
                     v-else
