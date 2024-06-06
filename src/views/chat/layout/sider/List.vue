@@ -32,9 +32,12 @@ function handleEdit({ uuid }: Chat.History, isEdit: boolean, event?: MouseEvent)
   chatStore.updateHistory(uuid, { isEdit })
 }
 
-function handleDelete(index: number, event?: MouseEvent | TouchEvent) {
+async function handleDelete(index: number, event?: MouseEvent | TouchEvent) {
   event?.stopPropagation()
   chatStore.deleteHistory(index)
+  // active重置await chatStore.setActive(uuid)
+  const uuid = chatStore.history[0]?.uuid
+  await chatStore.setActive(uuid)
   if (isMobile.value)
     appStore.setSiderCollapsed(true)
 }
