@@ -16,7 +16,7 @@ export interface gptsType{
     bad?:string|number
 }
  //const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
-export function upImg(file:any   ):Promise<any>
+export function upImg(file:any):Promise<any>
 {
     const maxSize= homeStore.myData.session.uploadImgSize? (+homeStore.myData.session.uploadImgSize):5
     return new Promise((h,r)=>{
@@ -223,7 +223,7 @@ export const flechTask= ( chat:Chat.Chat)=>{
         }
         const ts=  await mjFetch(`/mj/task/${chat.mjID}/fetch`);
         chat.opt= ts;
-        chat.loading=   (cnt>=99)?false:true; 
+        chat.loading = (cnt>=99)?false:true; 
         //chat.progress=ts.progress;
     
         if(ts.progress && ts.progress== "100%") chat.loading=false;
@@ -231,7 +231,6 @@ export const flechTask= ( chat:Chat.Chat)=>{
         homeStore.setMyData({act:'updateChat', actData:chat });
         //"NOT_START" //["SUBMITTED","IN_PROGRESS"].indexOf(ts.status)>-1
         if( ["FAILURE","SUCCESS"].indexOf(ts.status)==-1 && cnt<100 ){
-           
             setTimeout(() =>   check( ) , 5000 )
         } 
         mlog('task', ts.progress,ts, chat.uuid,chat.index  );

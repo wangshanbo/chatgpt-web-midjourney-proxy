@@ -92,7 +92,7 @@ watch(()=>homeStore.myData.act,(n)=> n=='saveChat' && (nGptStore.value=  chatSet
              <span class="line-clamp-1 overflow-hidden">{{ nGptStore.gpts.name }}</span> 
             </template>
             <template v-else >
-            <SvgIcon icon="heroicons:sparkles" /> 
+            <!-- <SvgIcon icon="heroicons:sparkles" />  -->
             <span >{{ nGptStore.model }}</span> 
             </template>
             <SvgIcon icon="icon-park-outline:right" />

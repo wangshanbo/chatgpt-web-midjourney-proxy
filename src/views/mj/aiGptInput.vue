@@ -336,12 +336,14 @@ watch(() => homeStore.myData.vtoken, regCookie);
           ></SvgIcon>
         </div>
       </div>
-      <!-- <div class="absolute bottom-0 right-0 z-1">
+      <div class="absolute bottom-0 right-0 z-1">
             <NPopover trigger="hover">
                 <template #trigger>
                     <NTag type="info" round size="small" style="cursor: pointer; " :bordered="false" >
                         <div class="opacity-60 flex"  >  
-                        <SvgIcon icon="material-symbols:token-outline"  /> {{ $t('mj.remain') }}{{ myToken.remain }}/{{ myToken.modelTokens }}
+                        <SvgIcon icon="material-symbols:token-outline"  /> {{ $t('mj.remain') }}{{ parseInt(myToken.remain*1.25) }} 
+                        <!-- {{ $t('mj.token') }} -->
+                        <!-- /{{ myToken.modelTokens }} -->
                         </div>
                     </NTag>
                 </template>
@@ -355,7 +357,7 @@ watch(() => homeStore.myData.vtoken, regCookie);
                   
             </NPopover>
           
-        </div> -->
+        </div>
     </div>
     <NAutoComplete
       v-model:value="mvalue"
