@@ -104,9 +104,9 @@ const isShow = computed(() => {
     <!-- <p v-if="!isChatGPTAPI">
         {{ $t("setting.reverseProxy") }}：{{ config?.reverseProxy ?? '-' }}
       </p> -->
-    <p>我们期待与您联系！您可以通过以下方式找到我们：</p>
+    <!-- <p>我们期待与您联系！您可以通过以下方式找到我们：</p>
     <p>QQ：627257359</p>
-    <p>邮箱：wangshanbo1932@gmail.com</p>
+    <p>邮箱：wangshanbo1932@gmail.com</p> -->
 
     <!-- <p>{{ $t("setting.timeout") }}：{{ config?.timeoutMs ?? '-' }}</p>  -->
     <!-- <p>{{ $t("setting.socks") }}：{{ config?.socksProxy ?? '-' }}</p>

@@ -77,13 +77,12 @@ const getContainerClass = computed(() => {
     </div>
     <Permission :visible="needPermission" />
   </div>
-   <aiMobileMenu v-if="isMobile"   /> 
-
+   <!-- <aiMobileMenu v-if="isMobile"   />  -->
   <aiFooter/>
 </template>
 
 <style  >
 .h55{
-  height: calc(100% - 55px);
+  height: calc(100%);
 }
 </style>

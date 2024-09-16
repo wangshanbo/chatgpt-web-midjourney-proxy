@@ -74,16 +74,9 @@ watch(
 </script>
 
 <template>
-  <NLayoutSider
-    :collapsed="collapsed"
-    :collapsed-width="0"
-    :width="260"
-    :show-trigger="isMobile ? false : 'arrow-circle'"
-    collapse-mode="transform"
-    bordered
-    :style="getMobileClass"
-    @update-collapsed="handleUpdateCollapsed"
-  >
+  <NLayoutSider :collapsed="collapsed" :collapsed-width="0" :width="260"
+    :show-trigger="isMobile ? false : 'arrow-circle'" collapse-mode="transform" bordered :style="getMobileClass"
+    @update-collapsed="handleUpdateCollapsed">
     <div class="flex flex-col h-full" :style="mobileSafeArea">
       <main class="flex flex-col flex-1 min-h-0">
         <div class="p-4">
@@ -95,15 +88,12 @@ watch(
           <List />
         </div>
         <div class="flex items-center p-4 space-x-4">
-          <!-- <div class="flex flex-1 text-center	 content-center justify-self-center"> -->
-          <!-- <NButton block @click="show = true">
+          <div class="flex flex-1 text-center	 content-center justify-self-center">
+            <NButton block @click="show = true">
               {{ $t('store.siderButton') }}
-            </NButton> -->
-          <!-- </div> -->
-          <NButton
-            class="flex flex-1 text-center content-center justify-self-center"
-            @click="handleClearAll"
-          >
+            </NButton>
+          </div>
+          <NButton class="flex flex-1 text-center content-center justify-self-center" @click="handleClearAll">
             清空所有聊天
           </NButton>
         </div>
@@ -112,11 +102,7 @@ watch(
     </div>
   </NLayoutSider>
   <template v-if="isMobile">
-    <div
-      v-show="!collapsed"
-      class="fixed inset-0 z-40 w-full h-full bg-black/40"
-      @click="handleUpdateCollapsed"
-    />
+    <div v-show="!collapsed" class="fixed inset-0 z-40 w-full h-full bg-black/40" @click="handleUpdateCollapsed" />
   </template>
   <PromptStore v-model:visible="show" />
 </template>

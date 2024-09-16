@@ -154,7 +154,7 @@ function handleImportButtonClick(): void {
           {{ $t('common.save') }}
         </NButton>
       </div> -->
-      <!-- <div
+      <div
         class="flex items-center space-x-4"
         :class="isMobile && 'items-start'"
       >
@@ -188,7 +188,7 @@ function handleImportButtonClick(): void {
             {{ $t('chat.clearHistoryConfirm') }}
           </NPopconfirm>
         </div>
-      </div> -->
+      </div>
       <div class="flex items-center space-x-4">
         <span class="flex-shrink-0 w-[100px]">{{ $t('setting.theme') }}</span>
         <div class="flex flex-wrap items-center gap-4">
@@ -216,12 +216,12 @@ function handleImportButtonClick(): void {
           />
         </div>
       </div>
-      <div class="flex items-center space-x-4">
+      <!-- <div class="flex items-center space-x-4">
         <span class="flex-shrink-0 w-[100px]">{{ $t('setting.resetUserInfo') }}</span>
         <NButton size="small" @click="handleReset">
           {{ $t('common.reset') }}
         </NButton>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
