@@ -16,9 +16,7 @@ import { chatSetting } from "./chat";
 
 export const KnowledgeCutOffDate: Record<string, string> = {
     default: "2021-09",
-    "gpt-4o-2024-05-13": "2024-05",
     "gpt-4o-mini-2024-07-18": "2024-07",
-    "gpt-4o": "2024-01",
 };
 
 const getUrl = (url: string) => {

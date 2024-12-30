@@ -374,7 +374,7 @@ export const canVisionModel= (model:string)=>{
 export const isCanBase64Model=(model:string)=>{
     //gpt-4o
     //customVisionModel
-    let visionArr=['gpt-4o-mini-2024-07-18','gpt-4o','gpt-4o-2024-05-13',]
+    let visionArr=['gpt-4o-mini-2024-07-18']
     if( homeStore.myData.session.customVisionModel ){ 
         homeStore.myData.session.customVisionModel.split(/[ ,]+/ig).map( (v:string)=>{
             visionArr.push( v.toLocaleLowerCase() )

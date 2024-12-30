@@ -15,9 +15,7 @@ const nGptStore = ref(  chatSet.getGptConfig() );
 
 const config = ref({
 model:[
-    'gpt-4o-mini-2024-07-18',
-    'gpt-4o',
-    'gpt-4o-2024-05-13',
+    'gpt-4o-mini-2024-07-18'
 ]
 ,maxToken:4096
 }); 
